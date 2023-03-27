@@ -1,3 +1,4 @@
 #!/bin/bash
 echo "test1"
 echo "hi"
+echp "test"
