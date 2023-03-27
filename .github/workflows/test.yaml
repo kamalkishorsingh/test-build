@@ -13,3 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd test1 && bash test1.sh
+      - name: Print name
+      - run: echo "Hello $NAME. $BUILD
