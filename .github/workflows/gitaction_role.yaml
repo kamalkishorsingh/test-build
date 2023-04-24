@@ -13,5 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd test1 && VERSION=$(jq -r '.version' package.json) && echo "The version is $VERSION"
+      - run: cd test1 && newtag=$(jq -r '.version' package.json) && echo "The version is $newtag"
       - run: cd test1 && oldimage=`cat values.yaml | grep image | awk '{print$2}'` && echo $oldimage
+      - run: cd test1 && 
