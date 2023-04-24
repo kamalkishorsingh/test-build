@@ -14,5 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd test1 && newtag=$(jq -r '.version' package.json) && echo "The version is $newtag"
-      - run: oldimage=`cat values.yaml | grep image_tag | awk '{print$2}'` && echo $oldimage
+      - run: oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo $oldimage
       - run: cd test1 && echo $newtag && sed -i 's/${oldimage}/${newtag}/g' values.yaml
