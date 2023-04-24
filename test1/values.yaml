@@ -1,3 +1,4 @@
 deployment: test
 images: testkk:latest
 tag: labels
+test: labels
