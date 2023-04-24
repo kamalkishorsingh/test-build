@@ -1,4 +1,3 @@
 deployment: test
 images: testkk:latest
 tag: labels
-tets : tag
