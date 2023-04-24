@@ -15,4 +15,4 @@ jobs:
       - uses: actions/checkout@v2
       - run: cd test1 && newtag=$(jq -r '.version' package.json) && echo "The version is $newtag"
       - run: cd test1 && oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo $oldimage
-      - run: cd test1 && echo $newtag && sed -i 's/${oldimage}/${newtag}/g' values.yaml
+      - run: cd test1 && echo $newtag && sed -e 's/${oldimage}/${newtag}/g' values.yaml && sed -i 's/${oldimage}/${newtag}/g' values.yaml
