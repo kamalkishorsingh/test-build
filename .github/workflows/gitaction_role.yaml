@@ -17,8 +17,8 @@ jobs:
       - run: cd test1 && oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo $oldimage
       
       - name: Replace string in file
-        uses: MathieuSoysal/replace-string-in-file@v1.0.0
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
           file: test1/values.yaml
-          old-string: ${{ oldimage }}
-          new-string: ${{ newtag }}
+          find: ${{ oldimage }}
+          replace: ${{ newtag }}
