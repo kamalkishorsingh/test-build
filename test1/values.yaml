@@ -1,4 +1,5 @@
 deployment: test
-images: testkk:latest
+images: kkktest
+image_tag: latest
 tag: labels
 test: labels
