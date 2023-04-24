@@ -14,3 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd test1 && VERSION=$(jq -r '.version' package.json) && echo "The version is $VERSION"
+      - run: oldimage=`cat values.yaml | grep image | awk '{print$2}'` && echo $oldimage
