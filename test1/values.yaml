@@ -1,5 +1,4 @@
 deployment: test
 images: kkktest
 image_tag: latest
-tag: labels
 tets: app
