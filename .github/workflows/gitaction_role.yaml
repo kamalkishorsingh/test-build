@@ -20,16 +20,10 @@ jobs:
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
  
-    - name: checkout 
-      uses: actions/checkout@v2   
-      
-    - name: Repository Dispatch to Devops
-      uses: peter-evans/repository-dispatch@v2
+    - uses: actions/checkout@v2    
       with:
-        token: ${{ secrets.NODE_ACCESS }} 
-        repository: kamalkishorsingh/node  
-        event-type: version-update
-        client-payload: '{"branch": "${{ github.ref_name }}", "sha": "${{ github.sha }}"}'
+        repository: kamalkishorsingh/node
+        token: ${{ secrets.NODE_ACCESS }}
         
 
 
