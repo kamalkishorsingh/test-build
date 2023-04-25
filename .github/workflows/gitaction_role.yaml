@@ -19,5 +19,21 @@ jobs:
         cd test1
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
+ 
+    - name: Clone private repo and push changes
+      uses: actions/checkout@v2
+      with:
+        repository: kamalkishorsingh/node
+        token: ${{ secrets.NODE_ACCESS }}
+        ref: master
+      run: |
+        git config user.name "kamalkishorsingh"
+        git config user.email "kamalkishorsingh3@gmail.com"
+        oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
+        sed -i "s/$oldimage/$newtag/" ./values.yaml
+        git add .
+        git commit -m "Update file"
+        git push
+        
 
 
