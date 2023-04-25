@@ -32,7 +32,7 @@ jobs:
     - name: Make Changes
       run: |
         cd
-        cd test-build/test1
+        cd test1
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
       env:
