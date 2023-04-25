@@ -15,8 +15,7 @@ jobs:
       - run: cd test1 && oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
       - run: cd test1 && newtag=$(jq -r '.version' package.json) && echo "$newtag"
       - name: Set up environment variables
-        run: |
-          echo "$oldimage"
+        run: echo $oldimage
         
 
 
