@@ -20,6 +20,7 @@ jobs:
         ls -al
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
+        pwd
         cd
         git clone -b master https://github.com/kamalkishorsingh/node.git
         cd node/test1
