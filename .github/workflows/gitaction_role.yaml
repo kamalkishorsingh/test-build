@@ -34,6 +34,9 @@ jobs:
         cd node/test1/
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
         echo "$oldimage"
+        cd test1
+        newtag=$(jq -r '.version' package.json)
+        echo "$newtag"
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
         
