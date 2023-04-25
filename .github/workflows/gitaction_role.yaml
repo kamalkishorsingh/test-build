@@ -37,6 +37,8 @@ jobs:
     - name: Push Changes
       run: |
         pwd
+        cd node
+        pwd
         #git push origin master
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
