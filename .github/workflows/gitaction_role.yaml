@@ -21,6 +21,7 @@ jobs:
         echo "$newtag"
 
     - name: Clone Private Repo
+      uses: actions/checkout@v2
       run: |
         git clone -b master https://github.com/kamalkishorsingh/node.git
         cd node/test1
