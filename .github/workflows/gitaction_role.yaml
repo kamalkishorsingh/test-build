@@ -19,13 +19,6 @@ jobs:
         cd test1
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
-
-    - name: Clone Private Repo
-      run: |
-        cd
-        cd test1
-        newtag=$(jq -r '.version' package.json)
-        echo "$newtag"
         git clone -b master https://github.com/kamalkishorsingh/node.git
         cd node/test1
         cat values.yaml
