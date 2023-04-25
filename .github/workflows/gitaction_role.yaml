@@ -35,7 +35,7 @@ jobs:
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
         echo "$oldimage"
         cd
-        cd test1
+        cd test-build/test1
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
       env:
