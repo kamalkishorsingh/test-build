@@ -9,14 +9,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 
-      - run: cd test1 && oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "export oldimage=$oldimage"
-      - run: cd test1 && newtag=$(jq -r '.version' package.json) && echo "$newtag"
-      - name: Set up environment variables
-        run: |
-          echo "$oldimage"
-        
+    - name: Check out code
+      uses: actions/checkout@v3
+      
+    - name: Build, tag, and push image for docker hub
+      run: |
+        newtag=$(jq -r '.version' package.json)
+        echo "$newtag"
 
 
