@@ -7,7 +7,7 @@ on:
     paths:
       - 'test1/**'
 env: 
-	oldimage: "cd test1 && oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')"
+  oldimage: "cd test1 && oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')"
   newtag: "cd test1 && newtag=$(jq -r '.version' package.json)"
   
 jobs:
