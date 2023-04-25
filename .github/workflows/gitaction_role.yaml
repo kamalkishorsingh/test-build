@@ -29,13 +29,7 @@ jobs:
         cd node/test1/
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
-    - name: Make Changes
-      run: |
-        cd node/test1/
-        oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
-        echo "$oldimage"
-      env:
-        PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
+
         
 
 
