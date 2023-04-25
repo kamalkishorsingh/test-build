@@ -31,9 +31,6 @@ jobs:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
     - name: Make Changes
       run: |
-        cd test1
-        newtag=$(jq -r '.version' package.json)
-        echo "$newtag"
         cd node/test1/
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
         echo "$oldimage"
