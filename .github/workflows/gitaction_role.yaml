@@ -26,7 +26,6 @@ jobs:
         echo "$oldimage"
         git config user.email "kamalkishorsingh@gmail.com"
         git config user.name "kamalkishorsingh"
-        cd node/test1/
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
 
