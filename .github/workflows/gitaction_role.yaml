@@ -29,6 +29,13 @@ jobs:
         git config user.name "kamalkishorsingh"
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
+    - name: Make Changes
+      run: |
+        cd node/test1/
+        cat values.yaml
+        echo "$newtag"
+      env:
+        PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
         
 
 
