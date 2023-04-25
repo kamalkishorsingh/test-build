@@ -22,11 +22,11 @@ jobs:
         git clone -b master https://github.com/kamalkishorsingh/node.git
         cd node/test1
         cat values.yaml
+        oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
+        echo "$oldimage"
         git config user.email "kamalkishorsingh@gmail.com"
         git config user.name "kamalkishorsingh"
         cd node/test1/
-        oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
-        echo "$oldimage"
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
     - name: Make Changes
