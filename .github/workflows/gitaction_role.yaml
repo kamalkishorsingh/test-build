@@ -25,9 +25,9 @@ jobs:
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
         echo "$oldimage"
         sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml
-        cd node
         git config user.email "kamalkishorsingh@gmail.com"
         git config user.name "kamalkishorsingh"
+        pwd
         git add .
         git commit -m "Add node repo values.yaml file"
         git push origin master
