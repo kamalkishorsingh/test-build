@@ -37,7 +37,7 @@ jobs:
         cat .git/config
         git push origin master
       env:
-        PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
     - name: Push Changes
       run: |
         pwd
