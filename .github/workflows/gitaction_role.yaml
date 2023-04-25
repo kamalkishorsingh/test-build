@@ -32,6 +32,8 @@ jobs:
         pwd
         git add .
         git commit -m "Add node repo values.yaml file"
+        cd ..
+        cat .git/config
         git push origin master
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
