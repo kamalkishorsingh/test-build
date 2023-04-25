@@ -30,6 +30,7 @@ jobs:
         git config user.name "kamalkishorsingh"
         git config user.email "kamalkishorsingh3@gmail.com"
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
+        echo "$oldimage"
         sed -i "s/$oldimage/$newtag/" ./values.yaml
         git add .
         git commit -m "Update file"
