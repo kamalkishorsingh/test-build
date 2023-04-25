@@ -22,15 +22,15 @@ jobs:
 
     - name: Clone Private Repo
       run: |
+        cd
+        cd test1
+        newtag=$(jq -r '.version' package.json)
+        echo "$newtag"
         git clone -b master https://github.com/kamalkishorsingh/node.git
         cd node/test1
         cat values.yaml
         git config user.email "kamalkishorsingh@gmail.com"
         git config user.name "kamalkishorsingh"
-        cd
-        cd test1
-        newtag=$(jq -r '.version' package.json)
-        echo "$newtag"
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
     - name: Make Changes
