@@ -23,7 +23,7 @@ jobs:
     - name: Clone Private Repo
       run: |
         git clone -b master https://github.com/kamalkishorsingh/node.git
-        cd test1
+        cd node/test1
         cat values.yaml
         git config user.email "kamalkishorsingh@gmail.com"
         git config user.name "kamalkishorsingh"
