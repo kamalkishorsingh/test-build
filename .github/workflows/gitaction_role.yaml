@@ -16,7 +16,7 @@ jobs:
       - run: cd test1 && newtag=$(jq -r '.version' package.json) && echo "$newtag"
       - name: Set up environment variables
         run: |
-          echo "export oldimage=$oldimage"
+          echo "$oldimage"
         
 
 
