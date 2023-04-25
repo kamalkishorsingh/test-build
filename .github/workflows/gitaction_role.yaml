@@ -18,7 +18,7 @@ jobs:
       run: |
         cd test1
         newtag=$(jq -r '.version' package.json)
-        $newtag >> $GITHUB_ENV
+        echo "$newtag" >> $GITHUB_ENV
 
     - name: Clone Private Repo
       run: |
