@@ -27,6 +27,9 @@ jobs:
         sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml
         git config user.email "kamalkishorsingh@gmail.com"
         git config user.name "kamalkishorsingh"
+        git add .
+        git commit -m "Add node repo values.yaml file"
+        git push origin master
       env:
         PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
 
