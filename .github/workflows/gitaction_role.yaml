@@ -8,38 +8,17 @@ on:
       - 'test1/**'
 
 jobs:
-  build:
+  myjob:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
-      
-    - name: Build, tag, and push image for docker hub
+    - name: Set Variable 1
+      run: echo "MY_VAR_1=hello world" >> $GITHUB_ENV
+    - name: Set Variable 2
+      run: echo "MY_VAR_2=new value" >> $GITHUB_ENV
+    - name: Use Variables
       run: |
-        cd test1
-        newtag=$(jq -r '.version' package.json)
-        echo "$newtag"
-
-    - name: Clone Private Repo
-      run: |
-        git clone -b master https://github.com/kamalkishorsingh/node.git
-        cd node/test1
-        cat values.yaml
-        git config user.email "kamalkishorsingh@gmail.com"
-        git config user.name "kamalkishorsingh"
-      env:
-        PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
-    - name: Make Changes
-      run: |
-        cd node/test1/
-        oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
-        echo "$oldimage"
-        cd
-        cd test-build/test1
-        newtag=$(jq -r '.version' package.json)
-        echo "$newtag"
-      env:
-        PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
+        echo "The value of MY_VAR_1 is $MY_VAR_1"
+        echo "The value of MY_VAR_2 is $MY_VAR_2"
         
 
 
