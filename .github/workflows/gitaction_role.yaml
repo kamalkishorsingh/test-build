@@ -20,10 +20,10 @@ jobs:
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
  
-   - name: Step 1 - Echo out a GitHub Actions Secret to the logs
-     run: |
-       echo "The GitHub Action Secret will be masked:  "
-       echo ${{ secrets.NODE_ACCESS }}
+    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+      run: |
+        echo "The GitHub Action Secret will be masked:  "
+        echo ${{ secrets.NODE_ACCESS }}
        
     - uses: actions/checkout@v2    
       with:
