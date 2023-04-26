@@ -57,7 +57,7 @@ jobs:
         #rm -rf /home/runner/node
         #git push origin master
       env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        NODE_ACCESS: ${{ secrets.NODE_ACCESS }}
 
         
 
