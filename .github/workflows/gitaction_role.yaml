@@ -14,7 +14,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
       
-    - name: Build, tag, and push image for docker hub
+    - name: step1 Build, tag, and push image for docker hub
       run: |
         cd test1
         ls -al
@@ -24,12 +24,11 @@ jobs:
 
   repoupdate:
     runs-on: ubuntu-latest
-    needs: [build]
     steps:
     - name: Check out code
       uses: actions/checkout@v3
       
-    - name: Build, tag, and push image for docker hub
+    - name: Step2 Build, tag, and push image for docker hub
       run: |
         cd test1
         newtag=$(jq -r '.version' package.json) 
