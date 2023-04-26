@@ -24,39 +24,27 @@ jobs:
 
   repoupdate:
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       
     - name: Build, tag, and push image for docker hub
       run: |
         cd test1
-        ls -al
-        newtag=$(jq -r '.version' package.json)
+        newtag=$(jq -r '.version' package.json) 
         echo "$newtag"
-        pwd
         cd
-        git clone -b master https://github.com/kamalkishorsingh/node.git
-        cd node/test1
-        git checkout main
-        cat values.yaml
-        pwd
+        git clone -b master https://github.com/kamalkishorsingh/node.git && cd node/test1 && git checkout main && pwd
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}')
         echo "$oldimage"
         sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml
-        git config user.email "kamalkishorsingh3@gmail.com"
-        git config user.name "kamalkishorsingh"
+        git config user.email "kamalkishorsingh3@gmail.com" && git config user.name "kamalkishorsingh"
         pwd
-        ls -al
         cd /home/runner/node
-        pwd
-        env
         git add .
         git commit -m "Add test1 values.yaml file updated date:- $(date +'%Y-%m-%d %H:%M:%S')"
-        cat .git/config
         git push https://$HELM_REPO_UPDATE:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:main
-        #rm -rf /home/runner/node
-        #git push origin master
       env:
         HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
 
