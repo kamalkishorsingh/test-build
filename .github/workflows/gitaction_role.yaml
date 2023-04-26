@@ -56,8 +56,8 @@ jobs:
         git push https://$PAT_TOKEN:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:main
         rm -rf /home/runner/node
         #git push origin master
-      with:
-        token: ${{ secrets.PAT_TOKEN }}
+      env:
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
         
 
