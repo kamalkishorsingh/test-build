@@ -51,7 +51,7 @@ jobs:
         cd /home/runner/node
         pwd
         git add .
-        git commit -m "Add test1 values.yaml file updated"
+        git commit -m "Add test1 values.yaml file updated date:- $(date +'%Y-%m-%d %H:%M:%S')"
         cat .git/config
         git push https://$PAT_TOKEN:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:main
         #rm -rf /home/runner/node
