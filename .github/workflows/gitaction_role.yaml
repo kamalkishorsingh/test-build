@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - new-master
     paths:
       - 'test1/**'
 
@@ -18,6 +18,8 @@ jobs:
       run: |
         cd test1
         ls -al
+        brancename=$(git branch)
+        echo "$brancename"
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
         echo "build step"
