@@ -50,9 +50,8 @@ jobs:
         ls -al
         cd /home/runner/node
         pwd
-        env
         git add .
-        git commit -m "Add node repo values.yaml file"
+        git commit -m "Add test1 values.yaml file updated"
         cat .git/config
         git push https://$PAT_TOKEN:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:main
         #rm -rf /home/runner/node
