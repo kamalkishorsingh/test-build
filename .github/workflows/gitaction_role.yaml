@@ -55,7 +55,7 @@ jobs:
         git commit -m "Add node repo values.yaml file"
         cat .git/config
         git push https://$PAT_TOKEN:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:main
-        rm -rf /home/runner/node
+        #rm -rf /home/runner/node
         #git push origin master
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
