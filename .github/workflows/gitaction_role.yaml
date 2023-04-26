@@ -20,6 +20,20 @@ jobs:
         ls -al
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
+        echo "build step"
+
+  repoupdate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+      
+    - name: Build, tag, and push image for docker hub
+      run: |
+        cd test1
+        ls -al
+        newtag=$(jq -r '.version' package.json)
+        echo "$newtag"
         pwd
         cd
         git clone -b master https://github.com/kamalkishorsingh/node.git
@@ -44,14 +58,6 @@ jobs:
         #git push origin master
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-    - name: Push Changes
-      run: |
-        pwd
-        cd node
-        pwd
-        #git push origin master
-      env:
-        PAT_TOKEN: ${{ secrets.NODE_ACCESS }}
 
         
 
