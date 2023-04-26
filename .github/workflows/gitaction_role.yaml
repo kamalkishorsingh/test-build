@@ -50,14 +50,15 @@ jobs:
         ls -al
         cd /home/runner/node
         pwd
+        env
         git add .
         git commit -m "Add test1 values.yaml file updated date:- $(date +'%Y-%m-%d %H:%M:%S')"
         cat .git/config
-        git push https://$PAT_TOKEN:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:main
+        git push https://$HELM_REPO_UPDATE:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:main
         #rm -rf /home/runner/node
         #git push origin master
       env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
 
         
 
