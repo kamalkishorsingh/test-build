@@ -31,6 +31,7 @@ jobs:
       
     - name: Step2 Build, tag, and push image for docker hub
       run: |
+        echo "$newtag"
         cd test1
         newtag=$(jq -r '.version' package.json) 
         echo "$newtag"
