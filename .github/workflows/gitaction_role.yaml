@@ -6,7 +6,9 @@ on:
       - new-master
     paths:
       - 'test1/**'
-
+env:
+  APP_FOLDER: test1
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +18,10 @@ jobs:
       
     - name: step1 Build, tag, and push image for docker hub
       run: |
-        cd test1
+        pwd
+        echo "folder"
+        cd "$APP_FOLDER"
+        pwd
         ls -al
         brancename=$(git branch)
         echo "$brancename"
