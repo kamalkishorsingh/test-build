@@ -32,6 +32,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
+      - name: step1 Build, tag, and push image for docker hub
+        run: |
+          pwd
+          echo "folder"
+          cd "$APP_FOLDER"
+          pwd
+          ls -al
+          brancename=$(git branch)
+          echo "$brancename"
+          newtag=$(jq -r '.version' package.json)
       - name: Checkout Private Repo
         uses: actions/checkout@v3
         with:
