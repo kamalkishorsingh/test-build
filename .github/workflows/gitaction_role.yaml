@@ -33,23 +33,23 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
-      with:
-        repository: kamalkishorsingh/node
-        ref: kktest
-        path: test1
-        HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
-    - name: Build, tag, and push image for docker hub
-      run: |
-        cd
-        cd test-build/test1
-        ls -al
-        newtag=$(jq -r '.version' package.json)
-        echo "$newtag"
-        cd 
-        cd node/test1
-        pwd
+      - name: Checkout Private Repo
+        uses: actions/checkout@v3
+        with:
+          repository: kamalkishorsingh/node
+          ref: kktest
+        env:  
+          HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
+      - name: Build, tag, and push image for docker hub
+        run: |
+          cd
+          cd test-build/test1
+          ls -al
+          newtag=$(jq -r '.version' package.json)
+          echo "$newtag"
+          cd 
+          cd node/test1
+          pwd
 
         
 
