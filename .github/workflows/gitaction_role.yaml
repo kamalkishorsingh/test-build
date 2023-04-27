@@ -44,4 +44,4 @@ jobs:
           echo "$branchname"
           ls -al 
           pwd
-          cd && ls -al /home/runner/work/test-build/
+          cd && ls -al /home/runner/work/test-build/test-build/
