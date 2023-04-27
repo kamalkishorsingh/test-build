@@ -43,6 +43,7 @@ jobs:
         run: |
           branchname=$(git branch)
           echo "$branchname"
+          pwd
           cd && ls -al && ls -al runners/
 
         
