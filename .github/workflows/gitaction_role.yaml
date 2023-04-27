@@ -40,6 +40,8 @@ jobs:
           HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
       - name: Build, tag, and push image for docker hub
         run: |
+          newtag=$(jq -r '.version' package.json)
+          echo "$newtag"
           branchname=$(git branch)
           echo "$branchname"
           ls -al 
