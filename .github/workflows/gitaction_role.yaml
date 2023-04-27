@@ -34,9 +34,10 @@ jobs:
     needs: [build]
     steps:
       - name: Checkout Private Repo
-        uses: actions/checkout@kktest
+        uses: actions/checkout@v3
         with:
           repository: kamalkishorsingh/node
+          ref: refs/heads/kktest
           HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
       - name: Build, tag, and push image for docker hub
         run: |
