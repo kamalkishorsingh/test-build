@@ -29,7 +29,7 @@ jobs:
         echo "$newtag"
         echo "build step"
 
-    repoupdate:
+  repoupdate:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
