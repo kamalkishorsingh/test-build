@@ -44,4 +44,6 @@ jobs:
           echo "$branchname"
           ls -al 
           pwd
-          cd && cat /home/runner/work/test-build/test-build/.git/config
+          cd && cd /home/runner/work/test-build/test-build/
+          oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "Old Tag :$oldimage"
+          sed -i "s/$oldimage/kk/" ./values.yaml && cat values.yaml
