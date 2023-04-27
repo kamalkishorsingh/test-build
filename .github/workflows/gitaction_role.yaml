@@ -44,7 +44,7 @@ jobs:
           branchname=$(git branch)
           echo "$branchname"
           pwd
-          cd && ls -al && ls -al runners/
+          cd && ls -al /home/runner/work/
 
         
 
