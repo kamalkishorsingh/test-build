@@ -38,7 +38,7 @@ jobs:
         cd
         git clone -b master https://github.com/kamalkishorsingh/node.git && cd node/test1 && git checkout main && pwd
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "$oldimage"
-        sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml cd /home/runner/node
+        sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml && pwd
         git config user.email "kamalkishorsingh3@gmail.com" && git config user.name "kamalkishorsingh"
         pwd
         git add .
