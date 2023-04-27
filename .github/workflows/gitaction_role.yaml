@@ -34,22 +34,14 @@ jobs:
     needs: [build]
     steps:
       - name: Checkout Private Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@kktest
         with:
           repository: kamalkishorsingh/node
-          ref: kktest
-        env:  
           HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
       - name: Build, tag, and push image for docker hub
         run: |
-          cd
-          cd test-build/test1
-          ls -al
-          newtag=$(jq -r '.version' package.json)
-          echo "$newtag"
-          cd 
-          cd node/test1
-          pwd
+          branchname=$(git branch)
+          echo "$branchname"
 
         
 
