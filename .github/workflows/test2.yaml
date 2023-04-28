@@ -28,25 +28,25 @@ jobs:
         newtag=$(jq -r '.version' package.json)
         echo "$newtag"
         echo "build step"
+
   repoupdate:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
-      - name: Checkout Private Repo
-        uses: actions/checkout@v3
-        with:
-          repository: kamalkishorsingh/node
-          ref: refs/heads/kktest
-          HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
-      - name: Build, tag, and push image for docker hub
-        run: |
-          ls -al
-          newtag=$(jq -r '.version' package.json)
-          echo "$newtag"
-          branchname=$(git branch)
-          echo "$branchname"
-          ls -al 
-          pwd
-          cd && cd /home/runner/work/test-build/test-build/
-          oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "Old Tag :$oldimage"
-          cd /home/runner/work/test-build/test-build/ && sed -i "s/$oldimage/kk/" ./values.yaml && cat values.yaml
+    - name: Check out code
+      uses: actions/checkout@v3
+      
+    - name: Step2 Build, tag, and push image for docker hub
+      run: |
+        cd "$APP_FOLDER"
+        newtag=$(jq -r '.version' package.json) && echo "New Tag : $newtag"
+        cd
+        git clone -b master https://github.com/kamalkishorsingh/node.git && cd node/"$APP_FOLDER" && git checkout kktest
+        oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "Old Tag :$oldimage"
+        sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml
+        git config user.email "kamalkishorsingh3@gmail.com" && git config user.name "kamalkishorsingh"
+        git add .
+        git commit -m "Add '$APP_FOLDER' values.yaml file updated date:- $(date +'%Y-%m-%d %H:%M:%S')"
+        git push https://$HELM_REPO_UPDATE:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:kktest
+      env:
+        HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
