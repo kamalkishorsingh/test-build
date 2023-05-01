@@ -1,13 +1,4 @@
-if [ -f .git/index.lock ]; then
-  echo "Git lock file exists, waiting for previous action to complete"
-  while [ -f .git/index.lock ]; do
-    sleep 60
-  done
-fi
-
-touch .git/index.lock
-
-name: deploy-test1
+name: deploy-test2
 on:
   workflow_dispatch:
   push:
@@ -59,5 +50,3 @@ jobs:
         git push https://$HELM_REPO_UPDATE:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:kktest
       env:
         HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
-
-rm .git/index.lock
