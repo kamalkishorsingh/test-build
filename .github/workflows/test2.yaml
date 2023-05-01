@@ -19,7 +19,7 @@ jobs:
     steps:
     - name: Wait for Other Workflow
       run: |
-        while [ "$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+        while [ "$(curl -s -H "Authorization: Bearer ${{ secrets.HELM_REPO_UPDATE }}" \
                     https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}/jobs \
                     | jq -r '.jobs[].status' | grep -vE 'completed|skipped|neutral' | wc -l)" -gt 0 ]; do
             sleep 120
