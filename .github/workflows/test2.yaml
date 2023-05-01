@@ -14,9 +14,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:          
-    - name: Check out code
-      uses: actions/checkout@v3
-
     - name: Check if any workflows are running
       uses: actions/github-script@v4
       with:
@@ -38,6 +35,9 @@ jobs:
       env:
         HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
         
+    - name: Check out code
+      uses: actions/checkout@v3
+
     - name: step1 Build, tag, and push image for docker hub
       run: |
         pwd
