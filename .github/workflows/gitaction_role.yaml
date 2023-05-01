@@ -20,6 +20,7 @@ jobs:
       run: |
         pwd
         echo "folder"
+        sleep 30
         cd "$APP_FOLDER"
         pwd
         ls -al
