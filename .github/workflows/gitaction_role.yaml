@@ -19,7 +19,7 @@ jobs:
     - name: step1 Build, tag, and push image for docker hub
       run: |
         pwd
-        sellp 60
+        sleep 60
         echo "folder"
         cd "$APP_FOLDER"
         pwd
