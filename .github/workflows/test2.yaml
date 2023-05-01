@@ -1,14 +1,11 @@
 name: deploy-test2
 on:
+  workflow_dispatch:
   push:
     branches:
       - new-master
     paths:
       - 'test2/**'
-  workflow_run:
-    workflows: ["Other Workflow"]
-    types:
-      - completed
 
 env:
   APP_FOLDER: test2
