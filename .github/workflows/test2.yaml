@@ -16,7 +16,10 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
+    steps:          
+    - name: Check out code
+      uses: actions/checkout@v3
+
     - name: Wait for Other Workflow
       run: |
         while [ "$(curl -s -H "Authorization: Bearer ${{ secrets.HELM_REPO_UPDATE }}" \
@@ -24,10 +27,7 @@ jobs:
                     | jq -r '.jobs[].status' | grep -vE 'completed|skipped|neutral' | wc -l)" -gt 0 ]; do
             sleep 120
         done
-          
-    - name: Check out code
-      uses: actions/checkout@v3
-      
+        
     - name: step1 Build, tag, and push image for docker hub
       run: |
         pwd
