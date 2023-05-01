@@ -20,13 +20,26 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
-    - name: Wait for Other Workflow
-      run: |
-        while [ "$(curl -s -H "Authorization: Bearer ${{ secrets.HELM_REPO_UPDATE }}" \
-                    https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}/jobs \
-                    | jq -r '.jobs[].status' | grep -vE 'completed|skipped|neutral' | wc -l)" -gt 0 ]; do
-            sleep 120
-        done
+    - name: Check if any workflows are running
+      uses: actions/github-script@v4
+      with:
+        script: |
+          const octokit = require('@octokit/rest')();
+          const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
+          const workflowRuns = await octokit.actions.listWorkflowRuns({
+            owner,
+            repo,
+            status: 'in_progress'
+          });
+          if (workflowRuns.data.total_count > 0) {
+            console.log('At least one workflow is currently running.');
+            process.exit(0);
+          } else {
+            console.log('No running workflows found.');
+            process.exit(1);
+          }
+      env:
+        HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
         
     - name: step1 Build, tag, and push image for docker hub
       run: |
