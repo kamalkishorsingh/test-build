@@ -51,6 +51,8 @@ jobs:
         git add .
         git commit -m "Add '$APP_FOLDER' values.yaml file updated date:- $(date +'%Y-%m-%d %H:%M:%S')"
         git push https://$HELM_REPO_UPDATE:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:kktest
+      continue-on-error: true
+      id: git-push
       env:
         HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
     - name: Retry on failure
