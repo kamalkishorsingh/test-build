@@ -32,9 +32,6 @@ jobs:
   repoupdate:
     runs-on: ubuntu-latest
     needs: [build]
-    strategy:
-      matrix:
-        max-attempts: [1, 2]
     steps:
     - name: Check out code
       uses: actions/checkout@v3
@@ -71,4 +68,3 @@ jobs:
         git push https://$HELM_REPO_UPDATE:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:kktest  
       env:
         HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
-        MAX_ATTEMPTS: ${{ matrix.max-attempts }}
