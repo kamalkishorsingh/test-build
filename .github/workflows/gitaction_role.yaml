@@ -54,7 +54,7 @@ jobs:
       env:
         HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
     - name: Retry on failure
-      if: ${{ steps.git-push.outcome == 'failure' && github.run_number < 3 }}
+      if: steps.git-push.outcome == 'failure'
       run: |
         cd && rm -rf node
         git clone -b master https://github.com/kamalkishorsingh/node.git && cd node/"$APP_FOLDER" && git checkout kktest
