@@ -45,7 +45,7 @@ jobs:
         git clone -b master https://github.com/kamalkishorsingh/node.git && cd node/"$APP_FOLDER" && git checkout kktest
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "Old Tag :$oldimage"
         sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml
-        sleep 60
+        sleep 10
         echo "sleep 60"
         git config user.email "kamalkishorsingh3@gmail.com" && git config user.name "kamalkishorsingh"
         git add .
