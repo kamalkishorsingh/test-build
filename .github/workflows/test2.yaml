@@ -45,10 +45,11 @@ jobs:
         git clone -b master https://github.com/kamalkishorsingh/node.git && cd node/"$APP_FOLDER" && git checkout kktest
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "Old Tag :$oldimage"
         sed -i "s/$oldimage/$newtag/" ./values.yaml && cat values.yaml
+        sleep 60
+        echo "sleep 60"
         git config user.email "kamalkishorsingh3@gmail.com" && git config user.name "kamalkishorsingh"
         git add .
         git commit -m "Add '$APP_FOLDER' values.yaml file updated date:- $(date +'%Y-%m-%d %H:%M:%S')"
-        sleep 30
         git push https://$HELM_REPO_UPDATE:x-oauth-basic@github.com/kamalkishorsingh/node.git HEAD:kktest
       env:
         HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
