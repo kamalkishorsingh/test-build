@@ -13,28 +13,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:          
-    - name: Check if any workflows are running
-      uses: actions/github-script@v4
-      with:
-        script: |
-          const octokit = require('@octokit/rest')();
-          const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
-          const workflowRuns = await octokit.actions.listWorkflowRuns({
-            owner,
-            repo,
-            status: 'in_progress'
-          });
-          if (workflowRuns.data.total_count > 0) {
-            console.log('At least one workflow is currently running.');
-            process.exit(0);
-          } else {
-            console.log('No running workflows found.');
-            process.exit(1);
-          }
-      env:
-        HELM_REPO_UPDATE: ${{ secrets.HELM_REPO_UPDATE }}
-        
+    steps:
     - name: Check out code
       uses: actions/checkout@v3
 
