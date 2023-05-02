@@ -58,6 +58,8 @@ jobs:
     - name: Retry on failure
       if: steps.git-push.outcome == 'failure'
       run: |
+        cd "$APP_FOLDER"
+        newtag=$(jq -r '.version' package.json) && echo "New Tag : $newtag"
         cd && rm -rf node
         git clone -b master https://github.com/kamalkishorsingh/node.git && cd node/"$APP_FOLDER" && git checkout kktest
         oldimage=$(cat values.yaml | grep image_tag | awk '{print$2}') && echo "Old Tag :$oldimage"
