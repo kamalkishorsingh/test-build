@@ -42,8 +42,10 @@ jobs:
       - name: 📋 Summary
         run: |
           echo "### File Check Result" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.check_file.outputs.missing_file }}" == "true" ]; then
+          if [ "$MISSING_FILE" = "true" ]; then
             echo "- ❌ **web/target/site/jacoco/index.html** is missing" >> $GITHUB_STEP_SUMMARY
-            echo "- 🏷️ Added label: `missing-required-file`" >> $GITHUB_STEP_SUMMARY
+            echo "- 🏷️ Added label: \`missing-required-file\`" >> $GITHUB_STEP_SUMMARY
           else
             echo "- ✅ File is present." >> $GITHUB_STEP_SUMMARY
+        env:
+          MISSING_FILE: ${{ steps.check_file.outputs.file_missing }}
