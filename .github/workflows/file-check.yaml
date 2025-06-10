@@ -39,14 +39,5 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           labels: missing-required-file
 
-
-      - name: 📋 Summary
-        run: |
-          echo "### File Check Result" >> $GITHUB_STEP_SUMMARY
-          if [ "${MISSING_FILE:-false}" = "true" ]; then
-            echo "- ❌ **test4/test4.sh** is missing" >> $GITHUB_STEP_SUMMARY
-            echo "- 🏷️ Added label: \`missing-required-file\`" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "- ✅ File is present." >> $GITHUB_STEP_SUMMARY
-        env:
-          MISSING_FILE: ${{ steps.check_file.outputs.file_missing }}
+      - name: 🔍 Final output
+         echo "Action is completed..."
