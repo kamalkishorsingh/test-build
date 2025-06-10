@@ -43,6 +43,7 @@ jobs:
           echo "### File Check Result" >> $GITHUB_STEP_SUMMARY
           if [ "$MISSING_FILE" = "true" ]; then
             echo "- ❌ **test4/test4-test.sh** is missing" >> $GITHUB_STEP_SUMMARY
+            echo "$GITHUB_STEP_SUMMARY"
             echo "- 🏷️ Added label: \`missing-required-file\`" >> $GITHUB_STEP_SUMMARY
           else
             echo "- ✅ File is present." >> $GITHUB_STEP_SUMMARY
