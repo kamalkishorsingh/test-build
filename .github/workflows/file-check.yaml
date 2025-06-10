@@ -40,7 +40,7 @@ jobs:
 
       - name: 📋 Summary
         run: |
-          echo "### File Check Result" >> $GITHUB_STEP_SUMMARY
+          echo "### File Check Result : $GITHUB_STEP_SUMMARY"
           echo "Missing File: $MISSING_FILE"
           if [[ "$MISSING_FILE" == "true" ]]; then
             echo "- ❌ **test4/test4-test.sh** is missing" >> $GITHUB_STEP_SUMMARY
