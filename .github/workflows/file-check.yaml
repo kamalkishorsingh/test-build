@@ -39,14 +39,14 @@ jobs:
           labels: missing-required-file
 
       - name: 📋 Summary
-        id: summary_status
         run: |
-          echo "### File Check Result" > $GITHUB_STEP_SUMMARY
-          if [ "$MISSING_FILE" = "true" ]; then
-            echo "- ❌ **test4/test4-test.sh** is missing" > $GITHUB_STEP_SUMMARY
-            echo "- 🏷️ Added label: \`missing-required-file\`" > $GITHUB_STEP_SUMMARY
+          echo "### File Check Result" >> $GITHUB_STEP_SUMMARY
+          echo "Missing File: $MISSING_FILE"
+          if [[ "$MISSING_FILE" == "true" ]]; then
+            echo "- ❌ **test4/test4-test.sh** is missing" >> $GITHUB_STEP_SUMMARY
+            echo "- 🏷️ Added label: \`missing-required-file\`" >> $GITHUB_STEP_SUMMARY
           else
-            echo "- ✅ File is present." > $GITHUB_STEP_SUMMARY
+            echo "- ✅ File is present." >> $GITHUB_STEP_SUMMARY
           fi
         env:
           MISSING_FILE: ${{ steps.check_file.outputs.missing_file }}
