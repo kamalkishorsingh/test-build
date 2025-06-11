@@ -20,7 +20,7 @@ jobs:
       - name: 🕵️ Check for Required File
         id: check_file
         run: |
-          FILE_TO_CHECK="test4/test4.sh"
+          FILE_TO_CHECK="test4/test4-test.sh"
           echo "Checking for $FILE_TO_CHECK..."
           if [ ! -f "$FILE_TO_CHECK" ]; then
             echo "missing_file=true" >> $GITHUB_OUTPUT
