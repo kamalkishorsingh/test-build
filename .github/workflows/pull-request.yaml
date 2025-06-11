@@ -41,7 +41,7 @@ jobs:
         if: steps.check_file.outputs.missing_file == 'false'
         uses: actions-ecosystem/action-remove-labels@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
           labels: missing-required-file
 
       - name: 📋 Fail if File Missing
