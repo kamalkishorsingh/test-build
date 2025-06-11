@@ -3,7 +3,7 @@ name: Check and Label PR if Required File is Missing
 on:
   pull_request:
     branches:
-      - test1
+      - test2
 
 jobs:
   check-required-file:
