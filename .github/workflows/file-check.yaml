@@ -21,7 +21,7 @@ jobs:
         run: |
           FILE_TO_CHECK="test4/test4.sh"
 
-          echo "Looking for $FILE_TO_CHECK..."
+          echo "Looking for $FILE_TO_CHECK...."
 
           if [ ! -f "$FILE_TO_CHECK" ]; then
             echo "::warning::File not found: $FILE_TO_CHECK"
