@@ -3,7 +3,7 @@ name: Check and Label PR if Required File is Missing
 on:
   pull_request:
     branches:
-      - test1
+      - test2
 
 jobs:
   check-required-file:
@@ -37,13 +37,6 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           labels: missing-required-file
 
-      - name: ❌ Remove Label if File Exists
-        if: steps.check_file.outputs.missing_file == 'false'
-        uses: actions-ecosystem/action-remove-labels@v1
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          labels: missing-required-file
-
       - name: 📋 Fail if File Missing
         if: steps.check_file.outputs.missing_file == 'true'
         run: |
@@ -53,4 +46,4 @@ jobs:
       - name: ✅ Success Summary
         if: steps.check_file.outputs.missing_file == 'false'
         run: |
-          echo "✅ Required file is present."
+          echo "✅ Required file is present.."
