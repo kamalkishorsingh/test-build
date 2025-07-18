@@ -2,3 +2,4 @@
 echo "test1 kk"
 echo "test1 kk"
 echo "hi"
+echo "hello"
